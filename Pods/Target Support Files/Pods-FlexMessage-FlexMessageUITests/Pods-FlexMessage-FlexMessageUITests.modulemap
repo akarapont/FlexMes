@@ -1,0 +1,6 @@
+framework module Pods_FlexMessage_FlexMessageUITests {
+  umbrella header "Pods-FlexMessage-FlexMessageUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

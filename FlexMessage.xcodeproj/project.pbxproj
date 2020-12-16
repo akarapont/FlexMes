@@ -1,0 +1,930 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C3A9D59CC8F7DCCC65319F8 /* Pods_FlexMessageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359BED47A38BFDDED3B6DEFA /* Pods_FlexMessageTests.framework */; };
+		6CB5C4488A9019B579E1CA6F /* Pods_FlexMessage_FlexMessageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 082BEA7BD9A885A81DB2A6B6 /* Pods_FlexMessage_FlexMessageUITests.framework */; };
+		D6EF80F7D2E3A6E9B4B40DB6 /* Pods_FlexMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6CD2B6D26AF85EBDA1E89E /* Pods_FlexMessage.framework */; };
+		F24E17D12588B15300262705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E17D02588B15300262705 /* AppDelegate.swift */; };
+		F24E17D32588B15300262705 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E17D22588B15300262705 /* SceneDelegate.swift */; };
+		F24E17D52588B15300262705 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E17D42588B15300262705 /* ViewController.swift */; };
+		F24E17D82588B15300262705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24E17D62588B15300262705 /* Main.storyboard */; };
+		F24E17DA2588B15400262705 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F24E17D92588B15400262705 /* Assets.xcassets */; };
+		F24E17DD2588B15400262705 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F24E17DB2588B15400262705 /* LaunchScreen.storyboard */; };
+		F24E17E82588B15400262705 /* FlexMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E17E72588B15400262705 /* FlexMessageTests.swift */; };
+		F24E17F32588B15400262705 /* FlexMessageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E17F22588B15400262705 /* FlexMessageUITests.swift */; };
+		F24E18282588BD5400262705 /* AppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E18272588BD5400262705 /* AppExtension.swift */; };
+		F29585472589AB2500BCBF9C /* CNUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585462589AB2500BCBF9C /* CNUtility.swift */; };
+		F29585AC2589C25700BCBF9C /* CNFlexMessageBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585AA2589C25700BCBF9C /* CNFlexMessageBoxCell.swift */; };
+		F29585AD2589C25700BCBF9C /* CNFlexMessageBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29585AB2589C25700BCBF9C /* CNFlexMessageBoxCell.xib */; };
+		F29585B32589C2F400BCBF9C /* CNFlexMessageButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585B12589C2F400BCBF9C /* CNFlexMessageButtonCell.swift */; };
+		F29585B42589C2F400BCBF9C /* CNFlexMessageButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29585B22589C2F400BCBF9C /* CNFlexMessageButtonCell.xib */; };
+		F29585BA2589C30600BCBF9C /* CNFlexMessageImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585B82589C30600BCBF9C /* CNFlexMessageImageCell.swift */; };
+		F29585BB2589C30600BCBF9C /* CNFlexMessageImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29585B92589C30600BCBF9C /* CNFlexMessageImageCell.xib */; };
+		F29585C12589C31400BCBF9C /* CNFlexMessageTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585BF2589C31400BCBF9C /* CNFlexMessageTextCell.swift */; };
+		F29585C22589C31400BCBF9C /* CNFlexMessageTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29585C02589C31400BCBF9C /* CNFlexMessageTextCell.xib */; };
+		F29585D22589CEC600BCBF9C /* CNFlexMessageBoxCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585D02589CEC600BCBF9C /* CNFlexMessageBoxCollCell.swift */; };
+		F29585D32589CEC600BCBF9C /* CNFlexMessageBoxCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29585D12589CEC600BCBF9C /* CNFlexMessageBoxCollCell.xib */; };
+		F29585DA2589CEDB00BCBF9C /* CNFlexMessageTextCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585D82589CEDB00BCBF9C /* CNFlexMessageTextCollCell.swift */; };
+		F29585DB2589CEDB00BCBF9C /* CNFlexMessageTextCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29585D92589CEDB00BCBF9C /* CNFlexMessageTextCollCell.xib */; };
+		F29585E12589CEEB00BCBF9C /* CNFlexMessageImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585DF2589CEEB00BCBF9C /* CNFlexMessageImageCollCell.swift */; };
+		F29585E22589CEEB00BCBF9C /* CNFlexMessageImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29585E02589CEEB00BCBF9C /* CNFlexMessageImageCollCell.xib */; };
+		F29585E82589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29585E62589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.swift */; };
+		F29585E92589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29585E72589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F24E17E42588B15400262705 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F24E17C52588B15300262705 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F24E17CC2588B15300262705;
+			remoteInfo = FlexMessage;
+		};
+		F24E17EF2588B15400262705 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F24E17C52588B15300262705 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F24E17CC2588B15300262705;
+			remoteInfo = FlexMessage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		069215C730CF6FAD03B838AA /* Pods-FlexMessage-FlexMessageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessage-FlexMessageUITests.debug.xcconfig"; path = "Target Support Files/Pods-FlexMessage-FlexMessageUITests/Pods-FlexMessage-FlexMessageUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		082BEA7BD9A885A81DB2A6B6 /* Pods_FlexMessage_FlexMessageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexMessage_FlexMessageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B11AA3C6E8E6AF6D1886085 /* Pods-FlexMessage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessage.release.xcconfig"; path = "Target Support Files/Pods-FlexMessage/Pods-FlexMessage.release.xcconfig"; sourceTree = "<group>"; };
+		359BED47A38BFDDED3B6DEFA /* Pods_FlexMessageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexMessageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		675C4D069664829D2B02B52D /* Pods-FlexMessageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessageTests.debug.xcconfig"; path = "Target Support Files/Pods-FlexMessageTests/Pods-FlexMessageTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B6CD2B6D26AF85EBDA1E89E /* Pods_FlexMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C0AD095ECBD23C3EE1B59B7 /* Pods-FlexMessage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessage.debug.xcconfig"; path = "Target Support Files/Pods-FlexMessage/Pods-FlexMessage.debug.xcconfig"; sourceTree = "<group>"; };
+		B442424D729D2E231A9B3C28 /* Pods-FlexMessageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessageTests.release.xcconfig"; path = "Target Support Files/Pods-FlexMessageTests/Pods-FlexMessageTests.release.xcconfig"; sourceTree = "<group>"; };
+		DA8A9057149716364802CAB3 /* Pods-FlexMessage-FlexMessageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessage-FlexMessageUITests.release.xcconfig"; path = "Target Support Files/Pods-FlexMessage-FlexMessageUITests/Pods-FlexMessage-FlexMessageUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F24E17CD2588B15300262705 /* FlexMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24E17D02588B15300262705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F24E17D22588B15300262705 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F24E17D42588B15300262705 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F24E17D72588B15300262705 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F24E17D92588B15400262705 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F24E17DC2588B15400262705 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F24E17DE2588B15400262705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F24E17E32588B15400262705 /* FlexMessageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlexMessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24E17E72588B15400262705 /* FlexMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexMessageTests.swift; sourceTree = "<group>"; };
+		F24E17E92588B15400262705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F24E17EE2588B15400262705 /* FlexMessageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlexMessageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24E17F22588B15400262705 /* FlexMessageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexMessageUITests.swift; sourceTree = "<group>"; };
+		F24E17F42588B15400262705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F24E18272588BD5400262705 /* AppExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtension.swift; sourceTree = "<group>"; };
+		F29585462589AB2500BCBF9C /* CNUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNUtility.swift; sourceTree = "<group>"; };
+		F29585AA2589C25700BCBF9C /* CNFlexMessageBoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNFlexMessageBoxCell.swift; sourceTree = "<group>"; };
+		F29585AB2589C25700BCBF9C /* CNFlexMessageBoxCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CNFlexMessageBoxCell.xib; sourceTree = "<group>"; };
+		F29585B12589C2F400BCBF9C /* CNFlexMessageButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNFlexMessageButtonCell.swift; sourceTree = "<group>"; };
+		F29585B22589C2F400BCBF9C /* CNFlexMessageButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CNFlexMessageButtonCell.xib; sourceTree = "<group>"; };
+		F29585B82589C30600BCBF9C /* CNFlexMessageImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNFlexMessageImageCell.swift; sourceTree = "<group>"; };
+		F29585B92589C30600BCBF9C /* CNFlexMessageImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CNFlexMessageImageCell.xib; sourceTree = "<group>"; };
+		F29585BF2589C31400BCBF9C /* CNFlexMessageTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNFlexMessageTextCell.swift; sourceTree = "<group>"; };
+		F29585C02589C31400BCBF9C /* CNFlexMessageTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CNFlexMessageTextCell.xib; sourceTree = "<group>"; };
+		F29585D02589CEC600BCBF9C /* CNFlexMessageBoxCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNFlexMessageBoxCollCell.swift; sourceTree = "<group>"; };
+		F29585D12589CEC600BCBF9C /* CNFlexMessageBoxCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CNFlexMessageBoxCollCell.xib; sourceTree = "<group>"; };
+		F29585D82589CEDB00BCBF9C /* CNFlexMessageTextCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNFlexMessageTextCollCell.swift; sourceTree = "<group>"; };
+		F29585D92589CEDB00BCBF9C /* CNFlexMessageTextCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CNFlexMessageTextCollCell.xib; sourceTree = "<group>"; };
+		F29585DF2589CEEB00BCBF9C /* CNFlexMessageImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNFlexMessageImageCollCell.swift; sourceTree = "<group>"; };
+		F29585E02589CEEB00BCBF9C /* CNFlexMessageImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CNFlexMessageImageCollCell.xib; sourceTree = "<group>"; };
+		F29585E62589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNFlexMessageButtonCollCell.swift; sourceTree = "<group>"; };
+		F29585E72589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CNFlexMessageButtonCollCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F24E17CA2588B15300262705 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6EF80F7D2E3A6E9B4B40DB6 /* Pods_FlexMessage.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F24E17E02588B15400262705 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3A9D59CC8F7DCCC65319F8 /* Pods_FlexMessageTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F24E17EB2588B15400262705 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CB5C4488A9019B579E1CA6F /* Pods_FlexMessage_FlexMessageUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F0497E339157856CD8C4CA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B6CD2B6D26AF85EBDA1E89E /* Pods_FlexMessage.framework */,
+				082BEA7BD9A885A81DB2A6B6 /* Pods_FlexMessage_FlexMessageUITests.framework */,
+				359BED47A38BFDDED3B6DEFA /* Pods_FlexMessageTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A09BF88A8DE9659C974129F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C0AD095ECBD23C3EE1B59B7 /* Pods-FlexMessage.debug.xcconfig */,
+				1B11AA3C6E8E6AF6D1886085 /* Pods-FlexMessage.release.xcconfig */,
+				069215C730CF6FAD03B838AA /* Pods-FlexMessage-FlexMessageUITests.debug.xcconfig */,
+				DA8A9057149716364802CAB3 /* Pods-FlexMessage-FlexMessageUITests.release.xcconfig */,
+				675C4D069664829D2B02B52D /* Pods-FlexMessageTests.debug.xcconfig */,
+				B442424D729D2E231A9B3C28 /* Pods-FlexMessageTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F24E17C42588B15300262705 = {
+			isa = PBXGroup;
+			children = (
+				F24E17CF2588B15300262705 /* FlexMessage */,
+				F24E17E62588B15400262705 /* FlexMessageTests */,
+				F24E17F12588B15400262705 /* FlexMessageUITests */,
+				F24E17CE2588B15300262705 /* Products */,
+				A09BF88A8DE9659C974129F3 /* Pods */,
+				3F0497E339157856CD8C4CA1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F24E17CE2588B15300262705 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F24E17CD2588B15300262705 /* FlexMessage.app */,
+				F24E17E32588B15400262705 /* FlexMessageTests.xctest */,
+				F24E17EE2588B15400262705 /* FlexMessageUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F24E17CF2588B15300262705 /* FlexMessage */ = {
+			isa = PBXGroup;
+			children = (
+				F24E17D02588B15300262705 /* AppDelegate.swift */,
+				F24E17D22588B15300262705 /* SceneDelegate.swift */,
+				F24E182C2588BD7F00262705 /* App */,
+				F24E18342588BDB600262705 /* Library */,
+				F24E17D92588B15400262705 /* Assets.xcassets */,
+				F24E17DB2588B15400262705 /* LaunchScreen.storyboard */,
+				F24E17DE2588B15400262705 /* Info.plist */,
+			);
+			path = FlexMessage;
+			sourceTree = "<group>";
+		};
+		F24E17E62588B15400262705 /* FlexMessageTests */ = {
+			isa = PBXGroup;
+			children = (
+				F24E17E72588B15400262705 /* FlexMessageTests.swift */,
+				F24E17E92588B15400262705 /* Info.plist */,
+			);
+			path = FlexMessageTests;
+			sourceTree = "<group>";
+		};
+		F24E17F12588B15400262705 /* FlexMessageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F24E17F22588B15400262705 /* FlexMessageUITests.swift */,
+				F24E17F42588B15400262705 /* Info.plist */,
+			);
+			path = FlexMessageUITests;
+			sourceTree = "<group>";
+		};
+		F24E18092588B73300262705 /* FlexMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				F29585962589BEDC00BCBF9C /* Box */,
+				F29585952589BECD00BCBF9C /* Button */,
+				F29585942589BEC500BCBF9C /* Image */,
+				F29585932589BEBF00BCBF9C /* Text */,
+			);
+			path = FlexMessageCell;
+			sourceTree = "<group>";
+		};
+		F24E182C2588BD7F00262705 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F24E18302588BD9800262705 /* Main */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F24E18302588BD9800262705 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F24E18092588B73300262705 /* FlexMessageCell */,
+				F24E17D42588B15300262705 /* ViewController.swift */,
+				F24E17D62588B15300262705 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F24E18342588BDB600262705 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				F24E18272588BD5400262705 /* AppExtension.swift */,
+				F29585462589AB2500BCBF9C /* CNUtility.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		F29585932589BEBF00BCBF9C /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				F29585BF2589C31400BCBF9C /* CNFlexMessageTextCell.swift */,
+				F29585C02589C31400BCBF9C /* CNFlexMessageTextCell.xib */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		F29585942589BEC500BCBF9C /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				F29585B82589C30600BCBF9C /* CNFlexMessageImageCell.swift */,
+				F29585B92589C30600BCBF9C /* CNFlexMessageImageCell.xib */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		F29585952589BECD00BCBF9C /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				F29585B12589C2F400BCBF9C /* CNFlexMessageButtonCell.swift */,
+				F29585B22589C2F400BCBF9C /* CNFlexMessageButtonCell.xib */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		F29585962589BEDC00BCBF9C /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				F295859F2589BF5700BCBF9C /* Cell */,
+				F29585AA2589C25700BCBF9C /* CNFlexMessageBoxCell.swift */,
+				F29585AB2589C25700BCBF9C /* CNFlexMessageBoxCell.xib */,
+			);
+			path = Box;
+			sourceTree = "<group>";
+		};
+		F295859F2589BF5700BCBF9C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F29585CC2589CEA300BCBF9C /* Button */,
+				F29585CB2589CE9F00BCBF9C /* Image */,
+				F29585CA2589CE9A00BCBF9C /* Text */,
+				F29585C92589CE9500BCBF9C /* Box */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F29585C92589CE9500BCBF9C /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				F29585D02589CEC600BCBF9C /* CNFlexMessageBoxCollCell.swift */,
+				F29585D12589CEC600BCBF9C /* CNFlexMessageBoxCollCell.xib */,
+			);
+			path = Box;
+			sourceTree = "<group>";
+		};
+		F29585CA2589CE9A00BCBF9C /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				F29585D82589CEDB00BCBF9C /* CNFlexMessageTextCollCell.swift */,
+				F29585D92589CEDB00BCBF9C /* CNFlexMessageTextCollCell.xib */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		F29585CB2589CE9F00BCBF9C /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				F29585DF2589CEEB00BCBF9C /* CNFlexMessageImageCollCell.swift */,
+				F29585E02589CEEB00BCBF9C /* CNFlexMessageImageCollCell.xib */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		F29585CC2589CEA300BCBF9C /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				F29585E62589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.swift */,
+				F29585E72589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.xib */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F24E17CC2588B15300262705 /* FlexMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F24E17F72588B15400262705 /* Build configuration list for PBXNativeTarget "FlexMessage" */;
+			buildPhases = (
+				A90115B19AEF46FE8A5F3E35 /* [CP] Check Pods Manifest.lock */,
+				F24E17C92588B15300262705 /* Sources */,
+				F24E17CA2588B15300262705 /* Frameworks */,
+				F24E17CB2588B15300262705 /* Resources */,
+				0E1520F79A3E17A2DEE4D9CF /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlexMessage;
+			productName = FlexMessage;
+			productReference = F24E17CD2588B15300262705 /* FlexMessage.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F24E17E22588B15400262705 /* FlexMessageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F24E17FA2588B15400262705 /* Build configuration list for PBXNativeTarget "FlexMessageTests" */;
+			buildPhases = (
+				DE9EB4DE73E8063DA6D00E7A /* [CP] Check Pods Manifest.lock */,
+				F24E17DF2588B15400262705 /* Sources */,
+				F24E17E02588B15400262705 /* Frameworks */,
+				F24E17E12588B15400262705 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F24E17E52588B15400262705 /* PBXTargetDependency */,
+			);
+			name = FlexMessageTests;
+			productName = FlexMessageTests;
+			productReference = F24E17E32588B15400262705 /* FlexMessageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F24E17ED2588B15400262705 /* FlexMessageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F24E17FD2588B15400262705 /* Build configuration list for PBXNativeTarget "FlexMessageUITests" */;
+			buildPhases = (
+				7F3D02615D94F4C8ADFE7807 /* [CP] Check Pods Manifest.lock */,
+				F24E17EA2588B15400262705 /* Sources */,
+				F24E17EB2588B15400262705 /* Frameworks */,
+				F24E17EC2588B15400262705 /* Resources */,
+				868B352490C5120FDBD958BD /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F24E17F02588B15400262705 /* PBXTargetDependency */,
+			);
+			name = FlexMessageUITests;
+			productName = FlexMessageUITests;
+			productReference = F24E17EE2588B15400262705 /* FlexMessageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F24E17C52588B15300262705 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					F24E17CC2588B15300262705 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					F24E17E22588B15400262705 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = F24E17CC2588B15300262705;
+					};
+					F24E17ED2588B15400262705 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = F24E17CC2588B15300262705;
+					};
+				};
+			};
+			buildConfigurationList = F24E17C82588B15300262705 /* Build configuration list for PBXProject "FlexMessage" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F24E17C42588B15300262705;
+			productRefGroup = F24E17CE2588B15300262705 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F24E17CC2588B15300262705 /* FlexMessage */,
+				F24E17E22588B15400262705 /* FlexMessageTests */,
+				F24E17ED2588B15400262705 /* FlexMessageUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F24E17CB2588B15300262705 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F29585DB2589CEDB00BCBF9C /* CNFlexMessageTextCollCell.xib in Resources */,
+				F24E17DD2588B15400262705 /* LaunchScreen.storyboard in Resources */,
+				F24E17DA2588B15400262705 /* Assets.xcassets in Resources */,
+				F24E17D82588B15300262705 /* Main.storyboard in Resources */,
+				F29585AD2589C25700BCBF9C /* CNFlexMessageBoxCell.xib in Resources */,
+				F29585B42589C2F400BCBF9C /* CNFlexMessageButtonCell.xib in Resources */,
+				F29585D32589CEC600BCBF9C /* CNFlexMessageBoxCollCell.xib in Resources */,
+				F29585E92589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.xib in Resources */,
+				F29585C22589C31400BCBF9C /* CNFlexMessageTextCell.xib in Resources */,
+				F29585BB2589C30600BCBF9C /* CNFlexMessageImageCell.xib in Resources */,
+				F29585E22589CEEB00BCBF9C /* CNFlexMessageImageCollCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F24E17E12588B15400262705 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F24E17EC2588B15400262705 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E1520F79A3E17A2DEE4D9CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlexMessage/Pods-FlexMessage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlexMessage/Pods-FlexMessage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlexMessage/Pods-FlexMessage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F3D02615D94F4C8ADFE7807 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlexMessage-FlexMessageUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		868B352490C5120FDBD958BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlexMessage-FlexMessageUITests/Pods-FlexMessage-FlexMessageUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlexMessage-FlexMessageUITests/Pods-FlexMessage-FlexMessageUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlexMessage-FlexMessageUITests/Pods-FlexMessage-FlexMessageUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A90115B19AEF46FE8A5F3E35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlexMessage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE9EB4DE73E8063DA6D00E7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlexMessageTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F24E17C92588B15300262705 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F29585B32589C2F400BCBF9C /* CNFlexMessageButtonCell.swift in Sources */,
+				F24E17D52588B15300262705 /* ViewController.swift in Sources */,
+				F29585E82589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.swift in Sources */,
+				F24E17D12588B15300262705 /* AppDelegate.swift in Sources */,
+				F29585DA2589CEDB00BCBF9C /* CNFlexMessageTextCollCell.swift in Sources */,
+				F29585AC2589C25700BCBF9C /* CNFlexMessageBoxCell.swift in Sources */,
+				F29585BA2589C30600BCBF9C /* CNFlexMessageImageCell.swift in Sources */,
+				F29585C12589C31400BCBF9C /* CNFlexMessageTextCell.swift in Sources */,
+				F24E18282588BD5400262705 /* AppExtension.swift in Sources */,
+				F24E17D32588B15300262705 /* SceneDelegate.swift in Sources */,
+				F29585472589AB2500BCBF9C /* CNUtility.swift in Sources */,
+				F29585E12589CEEB00BCBF9C /* CNFlexMessageImageCollCell.swift in Sources */,
+				F29585D22589CEC600BCBF9C /* CNFlexMessageBoxCollCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F24E17DF2588B15400262705 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F24E17E82588B15400262705 /* FlexMessageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F24E17EA2588B15400262705 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F24E17F32588B15400262705 /* FlexMessageUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F24E17E52588B15400262705 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F24E17CC2588B15300262705 /* FlexMessage */;
+			targetProxy = F24E17E42588B15400262705 /* PBXContainerItemProxy */;
+		};
+		F24E17F02588B15400262705 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F24E17CC2588B15300262705 /* FlexMessage */;
+			targetProxy = F24E17EF2588B15400262705 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F24E17D62588B15300262705 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F24E17D72588B15300262705 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F24E17DB2588B15400262705 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F24E17DC2588B15400262705 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F24E17F52588B15400262705 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F24E17F62588B15400262705 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F24E17F82588B15400262705 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C0AD095ECBD23C3EE1B59B7 /* Pods-FlexMessage.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 542EU4SW6T;
+				INFOPLIST_FILE = FlexMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nos.FlexMessage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F24E17F92588B15400262705 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B11AA3C6E8E6AF6D1886085 /* Pods-FlexMessage.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 542EU4SW6T;
+				INFOPLIST_FILE = FlexMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nos.FlexMessage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F24E17FB2588B15400262705 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 675C4D069664829D2B02B52D /* Pods-FlexMessageTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF5XA53CHX;
+				INFOPLIST_FILE = FlexMessageTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nos.FlexMessageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlexMessage.app/FlexMessage";
+			};
+			name = Debug;
+		};
+		F24E17FC2588B15400262705 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B442424D729D2E231A9B3C28 /* Pods-FlexMessageTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF5XA53CHX;
+				INFOPLIST_FILE = FlexMessageTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nos.FlexMessageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlexMessage.app/FlexMessage";
+			};
+			name = Release;
+		};
+		F24E17FE2588B15400262705 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 069215C730CF6FAD03B838AA /* Pods-FlexMessage-FlexMessageUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF5XA53CHX;
+				INFOPLIST_FILE = FlexMessageUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nos.FlexMessageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FlexMessage;
+			};
+			name = Debug;
+		};
+		F24E17FF2588B15400262705 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA8A9057149716364802CAB3 /* Pods-FlexMessage-FlexMessageUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF5XA53CHX;
+				INFOPLIST_FILE = FlexMessageUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nos.FlexMessageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FlexMessage;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F24E17C82588B15300262705 /* Build configuration list for PBXProject "FlexMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F24E17F52588B15400262705 /* Debug */,
+				F24E17F62588B15400262705 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F24E17F72588B15400262705 /* Build configuration list for PBXNativeTarget "FlexMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F24E17F82588B15400262705 /* Debug */,
+				F24E17F92588B15400262705 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F24E17FA2588B15400262705 /* Build configuration list for PBXNativeTarget "FlexMessageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F24E17FB2588B15400262705 /* Debug */,
+				F24E17FC2588B15400262705 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F24E17FD2588B15400262705 /* Build configuration list for PBXNativeTarget "FlexMessageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F24E17FE2588B15400262705 /* Debug */,
+				F24E17FF2588B15400262705 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F24E17C52588B15300262705 /* Project object */;
+}
