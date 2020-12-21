@@ -3,10 +3,12 @@
 
 target 'FlexMessage' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+use_frameworks!
 
   # Pods for FlexMessage
 pod 'SwiftyJSON', '~> 4.0'
+
+pod 'FlexLayout'
 
   target 'FlexMessageTests' do
     inherit! :search_paths

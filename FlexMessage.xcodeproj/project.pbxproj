@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2C3A9D59CC8F7DCCC65319F8 /* Pods_FlexMessageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359BED47A38BFDDED3B6DEFA /* Pods_FlexMessageTests.framework */; };
+		32A45DDE258C63D500ED3B2B /* FlexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A45DDD258C63D500ED3B2B /* FlexViewController.swift */; };
+		32A45DE7258C64C000ED3B2B /* FlexLayoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A45DE6258C64C000ED3B2B /* FlexLayoutCollectionViewCell.swift */; };
+		32A45DEC258C64F800ED3B2B /* FlexLayoutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A45DEB258C64F800ED3B2B /* FlexLayoutCollectionViewCell.xib */; };
 		6CB5C4488A9019B579E1CA6F /* Pods_FlexMessage_FlexMessageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 082BEA7BD9A885A81DB2A6B6 /* Pods_FlexMessage_FlexMessageUITests.framework */; };
 		D6EF80F7D2E3A6E9B4B40DB6 /* Pods_FlexMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6CD2B6D26AF85EBDA1E89E /* Pods_FlexMessage.framework */; };
 		F24E17D12588B15300262705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E17D02588B15300262705 /* AppDelegate.swift */; };
@@ -59,6 +62,9 @@
 		069215C730CF6FAD03B838AA /* Pods-FlexMessage-FlexMessageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessage-FlexMessageUITests.debug.xcconfig"; path = "Target Support Files/Pods-FlexMessage-FlexMessageUITests/Pods-FlexMessage-FlexMessageUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		082BEA7BD9A885A81DB2A6B6 /* Pods_FlexMessage_FlexMessageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexMessage_FlexMessageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B11AA3C6E8E6AF6D1886085 /* Pods-FlexMessage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessage.release.xcconfig"; path = "Target Support Files/Pods-FlexMessage/Pods-FlexMessage.release.xcconfig"; sourceTree = "<group>"; };
+		32A45DDD258C63D500ED3B2B /* FlexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexViewController.swift; sourceTree = "<group>"; };
+		32A45DE6258C64C000ED3B2B /* FlexLayoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexLayoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		32A45DEB258C64F800ED3B2B /* FlexLayoutCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlexLayoutCollectionViewCell.xib; sourceTree = "<group>"; };
 		359BED47A38BFDDED3B6DEFA /* Pods_FlexMessageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexMessageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		675C4D069664829D2B02B52D /* Pods-FlexMessageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexMessageTests.debug.xcconfig"; path = "Target Support Files/Pods-FlexMessageTests/Pods-FlexMessageTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B6CD2B6D26AF85EBDA1E89E /* Pods_FlexMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +133,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32A45DD9258C5E8500ED3B2B /* FlexLayout */ = {
+			isa = PBXGroup;
+			children = (
+				32A45DE2258C64A700ED3B2B /* Cell */,
+				32A45DDD258C63D500ED3B2B /* FlexViewController.swift */,
+			);
+			path = FlexLayout;
+			sourceTree = "<group>";
+		};
+		32A45DE2258C64A700ED3B2B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				32A45DE6258C64C000ED3B2B /* FlexLayoutCollectionViewCell.swift */,
+				32A45DEB258C64F800ED3B2B /* FlexLayoutCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		3F0497E339157856CD8C4CA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +250,7 @@
 		F24E18302588BD9800262705 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				32A45DD9258C5E8500ED3B2B /* FlexLayout */,
 				F24E18092588B73300262705 /* FlexMessageCell */,
 				F24E17D42588B15300262705 /* ViewController.swift */,
 				F24E17D62588B15300262705 /* Main.storyboard */,
@@ -444,6 +469,7 @@
 				F29585E92589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.xib in Resources */,
 				F29585C22589C31400BCBF9C /* CNFlexMessageTextCell.xib in Resources */,
 				F29585BB2589C30600BCBF9C /* CNFlexMessageImageCell.xib in Resources */,
+				32A45DEC258C64F800ED3B2B /* FlexLayoutCollectionViewCell.xib in Resources */,
 				F29585E22589CEEB00BCBF9C /* CNFlexMessageImageCollCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,9 +601,11 @@
 				F29585B32589C2F400BCBF9C /* CNFlexMessageButtonCell.swift in Sources */,
 				F24E17D52588B15300262705 /* ViewController.swift in Sources */,
 				F29585E82589CEFA00BCBF9C /* CNFlexMessageButtonCollCell.swift in Sources */,
+				32A45DDE258C63D500ED3B2B /* FlexViewController.swift in Sources */,
 				F24E17D12588B15300262705 /* AppDelegate.swift in Sources */,
 				F29585DA2589CEDB00BCBF9C /* CNFlexMessageTextCollCell.swift in Sources */,
 				F29585AC2589C25700BCBF9C /* CNFlexMessageBoxCell.swift in Sources */,
+				32A45DE7258C64C000ED3B2B /* FlexLayoutCollectionViewCell.swift in Sources */,
 				F29585BA2589C30600BCBF9C /* CNFlexMessageImageCell.swift in Sources */,
 				F29585C12589C31400BCBF9C /* CNFlexMessageTextCell.swift in Sources */,
 				F24E18282588BD5400262705 /* AppExtension.swift in Sources */,

@@ -38,6 +38,27 @@ class ViewController: UIViewController {
 	
 	let rawDataJSON: JSON = [
 		"type": "bubble",
+        "header": [
+            "type": "box",
+            "layout": "vertical",
+            "flex": 0,
+            "contents": [
+              [
+                "type": "text",
+                "text": "hello, world",
+                "contents": [
+                  [
+                    "type": "span",
+                    "text": "hello, world 1.  "
+                  ],
+                  [
+                    "type": "span",
+                    "text": "hello, world"
+                  ]
+                ]
+              ]
+            ]
+          ],
 		"hero": [
 			"type": "image",
 			"url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_3_movie.png",
@@ -244,17 +265,25 @@ class ViewController: UIViewController {
 	}
 	
 	func convertJSONFlex(){
-		//headet
-		renderJSON.appendIfArray(json: rawDataJSON["header"])
+		//header
+        if rawDataJSON["header"] != JSON.null {
+            renderJSON.appendIfArray(json: rawDataJSON["header"])
+        }
 		
 		//hero
-		renderJSON.appendIfArray(json: rawDataJSON["hero"])
+        if rawDataJSON["header"] != JSON.null {
+            renderJSON.appendIfArray(json: rawDataJSON["hero"])
+        }
 		
 		//body
-		renderJSON.appendIfArray(json: rawDataJSON["body"])
+        if rawDataJSON["body"] != JSON.null {
+            renderJSON.appendIfArray(json: rawDataJSON["body"])
+        }
 		
 		//footer
-		renderJSON.appendIfArray(json: rawDataJSON["footer"])
+        if rawDataJSON["footer"] != JSON.null {
+            renderJSON.appendIfArray(json: rawDataJSON["footer"])
+        }
 		
 		tableView.reloadData()
 	}
