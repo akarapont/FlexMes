@@ -78,11 +78,22 @@ extension FlexLayoutCollectionViewCell {
 //MARK: Create Flex View
 extension FlexLayoutCollectionViewCell {
     func setFlexView(json: JSON){
-        let header = json["header"]
-        if header != JSON.null {
-            setFlexHeader(json: header)
+        
+        flexLayoutView.configureLayout { (flex) in
+            flex.isEnabled = true
+            flex.flexDirection = .column
+            
+            let header = json["header"]
+            if header != JSON.null {
+                self.setFlexHeader(json: header)
+            }
+            let hero = json["hero"]
+            if hero != JSON.null {
+                self.setFlexHero(json: hero)
+            }
+            
         }
-        setNeedsLayout()
+        flexLayoutView.yoga.applyLayout(preservingOrigin: true)
     }
     
     func setFlexHeader(json: JSON){
@@ -103,59 +114,64 @@ extension FlexLayoutCollectionViewCell {
                         break
                 }
                 
-                
-                flexLayoutView.configureLayout(block: { (flex) in
+                let headerView = UIView(frame: .zero)
+                headerView.configureLayout(block: {
+                    (flex) in
                     flex.isEnabled = true
                     flex.flexDirection = layoutType
                     flex.padding = self.padding
                     flex.alignItems = .flexStart
 
-                    self.createContents(json: json["contents"])
+                    let contentViews = self.createContents(headerView: headerView, json: json["contents"])
+                    for view in contentViews {
+                        self.flexLayoutView.addSubview(view)
+                    }
                 })
                 
             default:
                 break
         }
-        
-        flexLayoutView.yoga.applyLayout(preservingOrigin: true)
     }
 }
 
 //MARK: Component
 extension FlexLayoutCollectionViewCell {
     
-    func createContents(json: JSON){
+    func createContents(headerView: UIView, json: JSON) -> [UIView] {
+        var views = [UIView]()
         for i in 0..<json.count {
             let type = json[i]["type"].stringValue
             switch type {
                 case FlexType.text:
-                    createFlexText(json: json[i])
+                    views.append(createFlexText(headerView: headerView, json: json[i]))
                 default:
                     break
             }
         }
+        return views
     }
     
     //Text
-    func createFlexText(json: JSON) {
+    func createFlexText(headerView: UIView, json: JSON) -> UIView{
         let contents = json["contents"]
         if contents == 0 {
             let label = makeLabel(x: 0, y: 0, json: json)
             label.configureLayout { (layout) in
                 layout.isEnabled = true
             }
-            flexLayoutView.addSubview(label)
+            headerView.addSubview(label)
         }else{
             for i in 0..<contents.count {
                 let label = makeLabel(x: 0, y: 0, json: contents[i])
                 label.configureLayout { (layout) in
                     layout.isEnabled = true
                 }
-                flexLayoutView.addSubview(label)
+                headerView.addSubview(label)
             }
             //columnContainerView.backgroundColor = UIColor.green
             //flexLayoutView.addSubview(columnContainerView)
         }
+        return headerView
     }
     
     func makeLabel(x: Int, y: Int, json: JSON) -> UILabel {
@@ -163,5 +179,23 @@ extension FlexLayoutCollectionViewCell {
         label.textColor = UIColor.init(hex: json["color"].stringValue)
         label.text = json["text"].stringValue
         return label
+    }
+    
+    func setFlexHero(json: JSON){
+        let episodeImageView = UIImageView(frame: .zero)
+        episodeImageView.backgroundColor = .gray
+        // 2
+        let image = UIImage(named: json["url"].stringValue)
+        episodeImageView.image = image
+        // 3
+        let imageWidth = image?.size.width ?? 1.0
+        let imageHeight = image?.size.height ?? 1.0
+        // 4
+        episodeImageView.configureLayout { (layout) in
+          layout.isEnabled = true
+          layout.flexGrow = 1.0
+          layout.aspectRatio = imageWidth / imageHeight
+        }
+        flexLayoutView.addSubview(episodeImageView)
     }
 }

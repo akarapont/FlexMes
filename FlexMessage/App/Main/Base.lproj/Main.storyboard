@@ -62,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xcl-ra-Tqc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="16" y="60" width="382" height="786"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0uQ-rs-X3q">
                                     <size key="itemSize" width="387" height="834"/>
@@ -72,7 +72,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wX3-PQ-hFD">
-                                        <rect key="frame" x="13.5" y="0.0" width="387" height="834"/>
+                                        <rect key="frame" x="-2.5" y="0.0" width="387" height="834"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MCI-xL-bpL">
                                             <rect key="frame" x="0.0" y="0.0" width="387" height="834"/>
@@ -87,10 +87,10 @@
                         <viewLayoutGuide key="safeArea" id="oPA-r7-tqc"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
-                            <constraint firstItem="xcl-ra-Tqc" firstAttribute="leading" secondItem="oPA-r7-tqc" secondAttribute="leading" id="BBr-TT-JlK"/>
-                            <constraint firstItem="oPA-r7-tqc" firstAttribute="trailing" secondItem="xcl-ra-Tqc" secondAttribute="trailing" id="QdM-hV-k8J"/>
-                            <constraint firstItem="oPA-r7-tqc" firstAttribute="bottom" secondItem="xcl-ra-Tqc" secondAttribute="bottom" id="W8r-9U-KdF"/>
-                            <constraint firstItem="xcl-ra-Tqc" firstAttribute="top" secondItem="oPA-r7-tqc" secondAttribute="top" id="Wf5-3H-sq7"/>
+                            <constraint firstItem="xcl-ra-Tqc" firstAttribute="leading" secondItem="oPA-r7-tqc" secondAttribute="leading" constant="16" id="BBr-TT-JlK"/>
+                            <constraint firstItem="oPA-r7-tqc" firstAttribute="trailing" secondItem="xcl-ra-Tqc" secondAttribute="trailing" constant="16" id="QdM-hV-k8J"/>
+                            <constraint firstItem="oPA-r7-tqc" firstAttribute="bottom" secondItem="xcl-ra-Tqc" secondAttribute="bottom" constant="16" id="W8r-9U-KdF"/>
+                            <constraint firstItem="xcl-ra-Tqc" firstAttribute="top" secondItem="oPA-r7-tqc" secondAttribute="top" constant="16" id="Wf5-3H-sq7"/>
                         </constraints>
                     </view>
                     <connections>

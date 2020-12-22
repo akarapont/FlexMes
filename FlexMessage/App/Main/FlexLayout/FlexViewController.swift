@@ -53,7 +53,7 @@ class FlexViewController: UIViewController {
             ],
             "hero": [
               "type": "image",
-              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_3_movie.png",
+              "url": "01_3_movie",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_3_movie.png",
               "size": "full",
               "aspectRatio": "20:13",
               "aspectMode": "cover",
