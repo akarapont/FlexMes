@@ -23,6 +23,7 @@ class FlexViewController: UIViewController {
     var renderJSON: JSON = []
     
     var renderFooterJSON: JSON = []
+    var reload : Int = 0
     
     let rawDataJSON: JSON = [
         "type": "carousel",
@@ -31,7 +32,7 @@ class FlexViewController: UIViewController {
             "type": "bubble",
             "header": [
               "type": "box",
-              "layout": "vertical",
+              "layout": "horizontal",
               "flex": 0,
               "contents": [
                 [
@@ -44,7 +45,7 @@ class FlexViewController: UIViewController {
                     ],
                     [
                       "type": "span",
-                      "text": "hello, world 3..."
+                      "text": "hello, world 31627836172637162371623781263."
                     ]
                   ]
                 ]
@@ -562,8 +563,10 @@ extension FlexViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //return CGSize(width: collectionView.frame.width, height: 700)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: indexPath) as! FlexLayoutCollectionViewCell
         return cell.sizeThatFits(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude))
     }
+    
     
 }

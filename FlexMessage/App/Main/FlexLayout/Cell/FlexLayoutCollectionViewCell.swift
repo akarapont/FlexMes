@@ -23,6 +23,7 @@ private enum LayoutType {
 class FlexLayoutCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var flexLayoutView: UIView!
+    private let padding: YGValue = 8.0
     
     var jsonData: JSON? {
         didSet {
@@ -34,9 +35,10 @@ class FlexLayoutCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        contentView.autoresizingMask.insert(.flexibleHeight)
+        contentView.autoresizingMask.insert(.flexibleWidth)
         setupCell()
     }
-    
 }
 
 //MARK: Layout
@@ -47,7 +49,6 @@ extension FlexLayoutCollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         layout(size: bounds.size)
     }
     
@@ -77,12 +78,10 @@ extension FlexLayoutCollectionViewCell {
 //MARK: Create Flex View
 extension FlexLayoutCollectionViewCell {
     func setFlexView(json: JSON){
-        
         let header = json["header"]
         if header != JSON.null {
             setFlexHeader(json: header)
         }
-    
         setNeedsLayout()
     }
     
@@ -91,50 +90,46 @@ extension FlexLayoutCollectionViewCell {
         switch type {
             case FlexType.box:
                 let contents = json["contents"]
-                let layoutType = json["layout"].stringValue.lowercased()
-                switch layoutType {
+                let layoutTypeString = json["layout"].stringValue.lowercased()
+                var layoutType: YGFlexDirection = .row
+                
+                //var layoutType: Flex.Direction = .row
+                switch layoutTypeString {
                     case LayoutType.vertical:
-                        let rowContainer = UIView()
-                        rowContainer.flex.direction(.row).define {
-                            (flex) in
-//                            if contents.count > 0 {
-//                                createContents(flex: flex, json: contents)
-//                            }
-                            let label1 = UILabel()
-                            label1.text = "Text 1"
-                            label1.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-                            
-                            let label2 = UILabel()
-                            label2.text = "Text 2"
-                            label2.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-                            
-                            let rowContainer = UIView()
-                            rowContainer.flex.direction(.row)
-                            rowContainer.flex.addItem(label1).grow(1)
-                            rowContainer.flex.addItem(label2)
-                            
-                            flex.addItem(rowContainer)
-                        }
-                        contentView.flex.addItem(rowContainer)
-                        
+                        layoutType = .column
+                    case LayoutType.horizontal:
+                        layoutType = .row
                     default:
                         break
                 }
+                
+                
+                flexLayoutView.configureLayout(block: { (flex) in
+                    flex.isEnabled = true
+                    flex.flexDirection = layoutType
+                    flex.padding = self.padding
+                    flex.alignItems = .flexStart
+
+                    self.createContents(json: json["contents"])
+                })
+                
             default:
                 break
         }
+        
+        flexLayoutView.yoga.applyLayout(preservingOrigin: true)
     }
 }
 
 //MARK: Component
 extension FlexLayoutCollectionViewCell {
     
-    func createContents(flex: Flex ,json: JSON){
+    func createContents(json: JSON){
         for i in 0..<json.count {
             let type = json[i]["type"].stringValue
             switch type {
                 case FlexType.text:
-                    createFlexText(flex: flex, json: json[i])
+                    createFlexText(json: json[i])
                 default:
                     break
             }
@@ -142,26 +137,31 @@ extension FlexLayoutCollectionViewCell {
     }
     
     //Text
-    func createFlexText(flex: Flex, json: JSON) {
+    func createFlexText(json: JSON) {
         let contents = json["contents"]
         if contents == 0 {
-            let label = makeLabel(x: 16, y: 0, json: json)
-            flex.addItem(label).wrap(Flex.Wrap.wrap)
-        }else{
-            flex.addItem().direction(.column).margin(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)).define { (flex) in
-                for i in 0..<contents.count {
-                    let label = makeLabel(x: 16, y: 0, json: contents[i])
-                    flex.addItem(label).wrap(Flex.Wrap.wrap)
-                }
+            let label = makeLabel(x: 0, y: 0, json: json)
+            label.configureLayout { (layout) in
+                layout.isEnabled = true
             }
+            flexLayoutView.addSubview(label)
+        }else{
+            for i in 0..<contents.count {
+                let label = makeLabel(x: 0, y: 0, json: contents[i])
+                label.configureLayout { (layout) in
+                    layout.isEnabled = true
+                }
+                flexLayoutView.addSubview(label)
+            }
+            //columnContainerView.backgroundColor = UIColor.green
+            //flexLayoutView.addSubview(columnContainerView)
         }
     }
     
     func makeLabel(x: Int, y: Int, json: JSON) -> UILabel {
-        let label = UILabel()
+        let label = UILabel(frame: .zero)
         label.textColor = UIColor.init(hex: json["color"].stringValue)
         label.text = json["text"].stringValue
-        label.frame = CGRect(x: x, y: y, width: 200, height: 50)
         return label
     }
 }
