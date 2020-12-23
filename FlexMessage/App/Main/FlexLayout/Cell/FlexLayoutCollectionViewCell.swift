@@ -122,8 +122,10 @@ extension FlexLayoutCollectionViewCell {
             if body != JSON.null {
                 self.setFlexBody(json: body)
             }
+            
+            flex.markDirty()
         }
-        flexLayoutView.yoga.applyLayout(preservingOrigin: false)
+        flexLayoutView.yoga.applyLayout(preservingOrigin: true)
         setNeedsLayout()
     }
     
@@ -247,12 +249,21 @@ extension FlexLayoutCollectionViewCell {
             layout.isEnabled = true
             layout.flexDirection = .row
             layout.margin = 8
-            layout.flexWrap = .wrap
+            
+            var isWrap = false
+            if json["wrap"].boolValue {
+                layout.flexWrap = .wrap
+                isWrap = true
+            }else{
+                layout.flexWrap = .noWrap
+            }
             
             let contents = json["contents"]
             if contents.count == 0 {
                 let label = self.makeLabel(x: 0, y: 0, json: json)
-                
+                if isWrap {
+                    label.numberOfLines = 0
+                }
                 label.configureLayout { (layout) in
                     layout.isEnabled = true
                 }
@@ -260,6 +271,9 @@ extension FlexLayoutCollectionViewCell {
             }else{
                 for i in 0..<contents.count {
                     let label = self.makeLabel(x: 0, y: 0, json: contents[i])
+                    if isWrap {
+                        label.numberOfLines = 0
+                    }
                     label.configureLayout { (layout) in
                         layout.isEnabled = true
                     }
@@ -272,9 +286,20 @@ extension FlexLayoutCollectionViewCell {
     
     func makeLabel(x: Int, y: Int, json: JSON) -> UILabel {
         let label = UILabel(frame: .zero)
-        label.textColor = UIColor.init(hex: json["color"].stringValue)
+        if json["color"].stringValue != "" {
+            label.textColor = UIColor.init(hex: json["color"].stringValue)
+        }
         label.text = json["text"].stringValue
         label.lineBreakMode = .byTruncatingTail
+        
+        let weight = json["weight"].stringValue
+        switch weight {
+            case "bold":
+                label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+                label.numberOfLines = 0
+            default:
+                break
+        }
         return label
     }
 }
