@@ -8,6 +8,7 @@
 import UIKit
 import FlexLayout
 import SwiftyJSON
+import PinLayout
 
 private enum FlexType {
     static let box: String = "box"
@@ -31,14 +32,25 @@ class FlexLayoutCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        contentView.autoresizingMask.insert(.flexibleHeight)
-        contentView.autoresizingMask.insert(.flexibleWidth)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        flexLayoutView.frame = frame
         setupCell()
+        reloadData()
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        // Initialization code
+//        contentView.autoresizingMask.insert(.flexibleHeight)
+//        contentView.autoresizingMask.insert(.flexibleWidth)
+//        setupCell()
+//    }
 }
 
 //MARK: Layout
@@ -49,22 +61,37 @@ extension FlexLayoutCollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layout(size: bounds.size)
-    }
-    
-    fileprivate func layout(size: CGSize) {
-        flex.size(size).layout()
+        layout()
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        layout(size: CGSize(width: size.width != .greatestFiniteMagnitude ? size.width : 10000,
-                            height: size.height != .greatestFiniteMagnitude ? size.height : 10000))
-        return CGSize(width: size.width, height: contentView.frame.height + 4)
+        contentView.pin.width(size.width)
+        layout()
+        return contentView.frame.size
+    }
+    private func layout() {
+        contentView.flex.layout(mode: .adjustHeight)
     }
     
-    override var intrinsicContentSize: CGSize {
-        return sizeThatFits(CGSize(width: frame.width, height: .greatestFiniteMagnitude))
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        layout(size: bounds.size)
+//    }
+//
+//    fileprivate func layout(size: CGSize) {
+//        flex.size(size).layout()
+//    }
+//
+//    override func sizeThatFits(_ size: CGSize) -> CGSize {
+//        contentView.pin.width(size.width)
+//        layout(size: CGSize(width: size.width != .greatestFiniteMagnitude ? size.width : 10000,
+//                            height: size.height != .greatestFiniteMagnitude ? size.height : 10000))
+//        return CGSize(width: size.width, height: contentView.frame.height + 4)
+//    }
+//
+//    override var intrinsicContentSize: CGSize {
+//        return sizeThatFits(CGSize(width: frame.width, height: .greatestFiniteMagnitude))
+//    }
 }
 
 extension FlexLayoutCollectionViewCell {
@@ -94,6 +121,7 @@ extension FlexLayoutCollectionViewCell {
             
         }
         flexLayoutView.yoga.applyLayout(preservingOrigin: true)
+        setNeedsLayout()
     }
     
     func setFlexHeader(json: JSON){
@@ -115,6 +143,7 @@ extension FlexLayoutCollectionViewCell {
                 }
                 
                 let headerView = UIView(frame: .zero)
+                headerView.pin.width(contentView.frame.width)
                 headerView.configureLayout(block: {
                     (flex) in
                     flex.isEnabled = true

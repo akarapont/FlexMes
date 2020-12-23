@@ -1,20 +1,24 @@
 PODS:
   - FlexLayout (1.3.20)
+  - PinLayout (1.9.3)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - FlexLayout
+  - PinLayout
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - FlexLayout
+    - PinLayout
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   FlexLayout: 025dd153bd5618dcc9f93ef914106d7dc2a86fdc
+  PinLayout: 4d8733121f8687edcc8f00c19bf1379d12808767
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 87da6f148458cfd3b3486f9d1a1b07dc2ae05c63
+PODFILE CHECKSUM: 055a3416b90c0bf4522013ac583e171eedbc6a9b
 
 COCOAPODS: 1.10.0

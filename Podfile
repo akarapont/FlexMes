@@ -9,6 +9,7 @@ use_frameworks!
 pod 'SwiftyJSON', '~> 4.0'
 
 pod 'FlexLayout'
+pod 'PinLayout'
 
   target 'FlexMessageTests' do
     inherit! :search_paths

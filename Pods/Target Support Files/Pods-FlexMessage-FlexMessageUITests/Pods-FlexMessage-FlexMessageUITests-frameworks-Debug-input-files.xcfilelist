@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-FlexMessage-FlexMessageUITests/Pods-FlexMessage-FlexMessageUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/FlexLayout/FlexLayout.framework
+${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
