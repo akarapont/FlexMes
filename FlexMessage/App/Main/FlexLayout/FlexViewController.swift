@@ -41,7 +41,7 @@ class FlexViewController: UIViewController {
                   "contents": [
                     [
                       "type": "span",
-                      "text": "hello, world 2."
+                      "text": "hello, world"
                     ],
                     [
                       "type": "span",
