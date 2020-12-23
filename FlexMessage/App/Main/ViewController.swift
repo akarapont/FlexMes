@@ -318,7 +318,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 		case CellFlexType.flexImage.rawValue:
 			return cellFlexHeightImage
 		case CellFlexType.flexBox.rawValue:
-			return UITableView.automaticDimension
+			return 500
 		default:
 			return 0
 		}
