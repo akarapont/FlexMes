@@ -470,6 +470,8 @@ class FlexViewController: UIViewController {
           ]
         ]
       ]
+    
+    var height = [CGFloat]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -557,10 +559,26 @@ extension FlexViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 700)
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: indexPath) as! FlexLayoutCollectionViewCell
-        //let cellSize = cell.sizeThatFits(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude))
-        //return cellSize
+        //return CGSize(width: collectionView.frame.width, height: 700)
+        
+        /*let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: indexPath) as! FlexLayoutCollectionViewCell
+        let cellSize = cell.sizeThatFits(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude))
+        print("Cell size at index: \(indexPath.row),   size: \(cellSize)")
+        return cellSize*/
+        
+        let cellSize = getCellSize(json: rawDataJSON["contents"])
+        return cellSize
+    }
+    
+    func getCellSize(json: JSON) -> CGSize {
+        for i in 0..<json.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: IndexPath(row: i, section: 0)) as! FlexLayoutCollectionViewCell
+            let cellSize = cell.sizeThatFits(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude))
+            
+            height.append(cellSize.height)
+            print("Cell size at index: \(collectionView.frame.width),   size: \(height.max())")
+        }
+        return CGSize(width: collectionView.frame.width, height: height.max() ?? 300)
     }
     
     

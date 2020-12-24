@@ -94,6 +94,8 @@ extension FlexLayoutCollectionViewCell {
 extension FlexLayoutCollectionViewCell {
     func setFlexView(json: JSON){
         contentView.backgroundColor = UIColor.clear
+        contentView.layer.cornerRadius = 12
+        contentView.clipsToBounds = true
         flexLayoutView.layer.cornerRadius = 12
         flexLayoutView.clipsToBounds = true
         flexLayoutView.configureLayout { (flex) in
