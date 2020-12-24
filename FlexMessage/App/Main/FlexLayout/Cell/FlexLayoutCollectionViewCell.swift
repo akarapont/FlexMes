@@ -30,6 +30,7 @@ class FlexLayoutCollectionViewCell: UICollectionViewCell {
     
     var jsonData: JSON? {
         didSet {
+            removeAllSubviews()
             reloadData()
         }
     }
