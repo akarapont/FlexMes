@@ -93,7 +93,7 @@ extension FlexLayoutCollectionViewCell {
 //MARK: Create Flex View
 extension FlexLayoutCollectionViewCell {
     func setFlexView(json: JSON){
-        contentView.backgroundColor = UIColor.clear
+        contentView.backgroundColor = UIColor.white
         contentView.layer.cornerRadius = 12
         contentView.clipsToBounds = true
         flexLayoutView.layer.cornerRadius = 12
@@ -117,6 +117,13 @@ extension FlexLayoutCollectionViewCell {
             
             flex.markDirty()
         }
+        
+//        let view = UIView(frame: self.bounds)
+//        view.backgroundColor = UIColor.white
+//        view.layer.cornerRadius = 12
+//        self.addSubview(view)
+//        self.sendSubviewToBack(view)
+        
         flexLayoutView.yoga.applyLayout(preservingOrigin: true)
         setNeedsLayout()
     }
@@ -310,7 +317,7 @@ extension FlexLayoutCollectionViewCell {
             layout.isEnabled = true
         }
         let episodeImageView = UIImageView(frame: .zero)
-        episodeImageView.backgroundColor = .gray
+        episodeImageView.backgroundColor = .white
         // 2
         let image = UIImage(named: json["url"].stringValue)
         episodeImageView.image = image

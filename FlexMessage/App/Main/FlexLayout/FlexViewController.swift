@@ -84,27 +84,27 @@ class FlexViewController: UIViewController {
                   "contents": [
                     [
                       "type": "icon",
-                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                      "url": "voteStar",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
                       "size": "sm"
                     ],
                     [
                       "type": "icon",
-                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                      "url": "voteStar",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
                       "size": "sm"
                     ],
                     [
                       "type": "icon",
-                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                      "url": "voteStar",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
                       "size": "sm"
                     ],
                     [
                       "type": "icon",
-                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                      "url": "voteStar",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
                       "size": "sm"
                     ],
                     [
                       "type": "icon",
-                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png",
+                      "url": "greyStar", //"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png",
                       "size": "sm"
                     ],
                     [
