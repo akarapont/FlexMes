@@ -231,7 +231,7 @@ class FlexViewController: UIViewController {
             "type": "bubble",
             "hero": [
               "type": "image",
-              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+              "url": "Burger",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
               "size": "full",
               "aspectRatio": "20:13",
               "aspectMode": "cover",
@@ -269,7 +269,7 @@ class FlexViewController: UIViewController {
                       "contents": [
                         [
                           "type": "icon",
-                          "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"
+                          "url": "icon"//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"
                         ],
                         [
                           "type": "text",
@@ -294,7 +294,7 @@ class FlexViewController: UIViewController {
                       "contents": [
                         [
                           "type": "icon",
-                          "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"
+                            "url": "icon"//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"
                         ],
                         [
                           "type": "text",
@@ -322,16 +322,7 @@ class FlexViewController: UIViewController {
                   "size": "xxs",
                   "color": "#AAAAAA",
                   "wrap": true,
-                  "contents": [
-                    [
-                      "type": "span",
-                      "text": "hello, world123"
-                    ],
-                    [
-                      "type": "span",
-                      "text": "hello, worldcgfgfghfghfghfghfghfgfgfghf"
-                    ]
-                  ]
+                  "contents":[]
                 ]
               ]
             ],
@@ -490,9 +481,11 @@ class FlexViewController: UIViewController {
     func setUp() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         collectionView.register(UINib(nibName: Constant.flexCellId, bundle: Bundle.main), forCellWithReuseIdentifier: Constant.flexCellId)
-        collectionView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     func convertJSONFlex(){
@@ -544,7 +537,7 @@ extension FlexViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let dataType = rawDataJSON["type"].stringValue
         switch dataType {
             case "carousel":
-                return 1//rawDataJSON["contents"].count
+                return rawDataJSON["contents"].count
             default:
                 return 0
         }
@@ -556,6 +549,7 @@ extension FlexViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case "carousel":
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: indexPath) as! FlexLayoutCollectionViewCell
                 cell.jsonData = rawDataJSON["contents"][indexPath.row]
+                cell.layoutIfNeeded()
                 return cell
             default:
                 return UICollectionViewCell(frame: CGRect.zero)
@@ -563,9 +557,10 @@ extension FlexViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //return CGSize(width: collectionView.frame.width, height: 700)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: indexPath) as! FlexLayoutCollectionViewCell
-        return cell.sizeThatFits(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude))
+        return CGSize(width: collectionView.frame.width, height: 700)
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: indexPath) as! FlexLayoutCollectionViewCell
+        //let cellSize = cell.sizeThatFits(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude))
+        //return cellSize
     }
     
     

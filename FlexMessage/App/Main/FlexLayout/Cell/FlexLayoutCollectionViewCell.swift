@@ -14,11 +14,13 @@ private enum FlexType {
     static let box: String = "box"
     static let text: String = "text"
     static let image: String = "image"
+    static let icon: String = "icon"
 }
 
 private enum LayoutType {
     static let horizontal: String = "horizontal"
     static let vertical: String = "vertical"
+    static let baseline: String = "baseline"
 }
 
 class FlexLayoutCollectionViewCell: UICollectionViewCell {
@@ -44,19 +46,24 @@ class FlexLayoutCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    //    override func awakeFromNib() {
-    //        super.awakeFromNib()
-    //        // Initialization code
-    //        contentView.autoresizingMask.insert(.flexibleHeight)
-    //        contentView.autoresizingMask.insert(.flexibleWidth)
-    //        setupCell()
-    //    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        contentView.autoresizingMask.insert(.flexibleHeight)
+        setupCell()
+    }
+    
+    func removeAllSubviews(){
+        for view in flexLayoutView.subviews {
+            view.removeFromSuperview()
+        }
+    }
 }
 
 //MARK: Layout
 extension FlexLayoutCollectionViewCell {
     func setupCell(){
-        
+        removeAllSubviews()
     }
     
     override func layoutSubviews() {
@@ -72,26 +79,6 @@ extension FlexLayoutCollectionViewCell {
     private func layout() {
         contentView.flex.layout(mode: .adjustHeight)
     }
-    
-    //    override func layoutSubviews() {
-    //        super.layoutSubviews()
-    //        layout(size: bounds.size)
-    //    }
-    //
-    //    fileprivate func layout(size: CGSize) {
-    //        flex.size(size).layout()
-    //    }
-    //
-    //    override func sizeThatFits(_ size: CGSize) -> CGSize {
-    //        contentView.pin.width(size.width)
-    //        layout(size: CGSize(width: size.width != .greatestFiniteMagnitude ? size.width : 10000,
-    //                            height: size.height != .greatestFiniteMagnitude ? size.height : 10000))
-    //        return CGSize(width: size.width, height: contentView.frame.height + 4)
-    //    }
-    //
-    //    override var intrinsicContentSize: CGSize {
-    //        return sizeThatFits(CGSize(width: frame.width, height: .greatestFiniteMagnitude))
-    //    }
 }
 
 extension FlexLayoutCollectionViewCell {
@@ -105,22 +92,24 @@ extension FlexLayoutCollectionViewCell {
 //MARK: Create Flex View
 extension FlexLayoutCollectionViewCell {
     func setFlexView(json: JSON){
-        
+        contentView.backgroundColor = UIColor.clear
+        flexLayoutView.layer.cornerRadius = 12
+        flexLayoutView.clipsToBounds = true
         flexLayoutView.configureLayout { (flex) in
             flex.isEnabled = true
             flex.flexDirection = .column
             
             let header = json["header"]
             if header != JSON.null {
-                self.setFlexHeader(json: header)
+                self.checkFlexType(json: header)
             }
             let hero = json["hero"]
             if hero != JSON.null {
-                self.setFlexHero(json: hero)
+                self.checkFlexType(json: hero)
             }
             let body = json["body"]
             if body != JSON.null {
-                self.setFlexBody(json: body)
+                self.checkFlexType(json: body)
             }
             
             flex.markDirty()
@@ -128,127 +117,99 @@ extension FlexLayoutCollectionViewCell {
         flexLayoutView.yoga.applyLayout(preservingOrigin: true)
         setNeedsLayout()
     }
-    
-    //MARK: Flex Header
-    func setFlexHeader(json: JSON){
-        let type = json["type"].stringValue.lowercased()
-        switch type {
-            case FlexType.box:
-                let contents = json["contents"]
-                let layoutTypeString = json["layout"].stringValue.lowercased()
-                var layoutType: YGFlexDirection = .row
-                
-                //var layoutType: Flex.Direction = .row
-                switch layoutTypeString {
-                    case LayoutType.vertical:
-                        layoutType = .column
-                    case LayoutType.horizontal:
-                        layoutType = .row
-                    default:
-                        break
-                }
-                
-                let headerView = UIView(frame: .zero)
-                headerView.pin.width(contentView.frame.width)
-                headerView.configureLayout(block: {
-                    (flex) in
-                    flex.isEnabled = true
-                    flex.flexDirection = layoutType
-                    flex.padding = self.padding
-                    flex.alignItems = .flexStart
-                    
-                    let contentViews = self.createContents(headerView: headerView, json: json["contents"])
-                    for view in contentViews {
-                        self.flexLayoutView.addSubview(view)
-                    }
-                })
-            default:
-                break
-        }
-    }
-    
-    //MARK: Flex Hero
-    func setFlexHero(json: JSON){
-        let episodeImageView = UIImageView(frame: .zero)
-        episodeImageView.backgroundColor = .gray
-        // 2
-        let image = UIImage(named: json["url"].stringValue)
-        episodeImageView.image = image
-        // 3
-        let imageWidth = image?.size.width ?? 1.0
-        let imageHeight = image?.size.height ?? 1.0
-        // 4
-        episodeImageView.configureLayout { (layout) in
-            layout.isEnabled = true
-            layout.flexGrow = 1.0
-            layout.aspectRatio = imageWidth / imageHeight
-        }
-        flexLayoutView.addSubview(episodeImageView)
-    }
-    
-    func setFlexBody(json: JSON){
-        let type = json["type"].stringValue.lowercased()
-        switch type {
-            case FlexType.box:
-                let contents = json["contents"]
-                let layoutTypeString = json["layout"].stringValue.lowercased()
-                var layoutType: YGFlexDirection = .row
-                
-                //var layoutType: Flex.Direction = .row
-                switch layoutTypeString {
-                    case LayoutType.vertical:
-                        layoutType = .column
-                    case LayoutType.horizontal:
-                        layoutType = .row
-                    default:
-                        break
-                }
-                
-                let headerView = UIView(frame: .zero)
-                headerView.pin.width(contentView.frame.width)
-                headerView.configureLayout(block: {
-                    (flex) in
-                    flex.isEnabled = true
-                    flex.flexDirection = layoutType
-                    flex.padding = self.padding
-                    flex.alignItems = .flexStart
-                    
-                    let contentViews = self.createContents(headerView: headerView, json: json["contents"])
-                    for view in contentViews {
-                        self.flexLayoutView.addSubview(view)
-                    }
-                })
-            default:
-                break
-        }
-    }
 }
 
 //MARK: Component
 extension FlexLayoutCollectionViewCell {
     
-    func createContents(headerView: UIView, json: JSON) -> [UIView] {
+    func checkFlexType(json: JSON){
+        let type = json["type"].stringValue.lowercased()
+        switch type {
+            case FlexType.box:
+                let flexBoxView = createFlexBox(json: json)
+                flexLayoutView.addSubview(flexBoxView)
+            case FlexType.image:
+                let flexImageView = createFlexImage(json: json)
+                flexLayoutView.addSubview(flexImageView)
+            default:
+                break
+        }
+    }
+    
+    func createContents(contentView: UIView, json: JSON) -> [UIView] {
         var views = [UIView]()
         for i in 0..<json.count {
             let type = json[i]["type"].stringValue
             switch type {
                 case FlexType.text:
-                    views.append(createFlexText(headerView: headerView, json: json[i]))
+                    let flexText = createFlexText(contentView: contentView, json: json[i])
+                    views.append(flexText)
+                case FlexType.image:
+                    let flexImage = createFlexIcon(json: json[i])
+                    views.append(flexImage)
+                case FlexType.icon:
+                    let flexIcon = createFlexIcon(json: json[i])
+                    views.append(flexIcon)
+                case FlexType.box:
+                    let flexBoxView = createFlexBox(json: json[i])
+                    views.append(flexBoxView)
                 default:
                     break
             }
         }
         return views
     }
-    
-    //Text
-    func createFlexText(headerView: UIView, json: JSON) -> UIView{
+}
+
+//MARK: Flex Box
+extension FlexLayoutCollectionViewCell {
+    func createFlexBox(json: JSON) -> UIView {
+        let contents = json["contents"]
+        let layoutTypeString = json["layout"].stringValue.lowercased()
+        var layoutType: YGFlexDirection = .row
+        
+        //var layoutType: Flex.Direction = .row
+        switch layoutTypeString {
+            case LayoutType.vertical:
+                layoutType = .column
+            case LayoutType.horizontal:
+                layoutType = .row
+            default:
+                break
+        }
+        
+        let containerView = UIView(frame: .zero)
+        containerView.pin.width(contentView.frame.width)
+        containerView.configureLayout(block: {
+            (flex) in
+            flex.isEnabled = true
+            flex.flexDirection = layoutType
+            flex.padding = self.padding
+            
+            if layoutTypeString == LayoutType.baseline {
+                flex.alignItems = .baseline
+            }else{
+                flex.alignItems = .flexStart
+            }
+            
+            let contentViews = self.createContents(contentView: containerView, json: json["contents"])
+            for view in contentViews {
+                containerView.addSubview(view)
+            }
+        })
+        return containerView
+    }
+}
+
+//MARK: Flex Text
+extension FlexLayoutCollectionViewCell {
+    func createFlexText(contentView: UIView, json: JSON) -> UIView{
         let view = UIView(frame: .zero)
         view.pin.width(contentView.frame.width)
         view.configureLayout { (layout) in
             layout.isEnabled = true
             layout.flexDirection = .row
-            layout.margin = 8
+            layout.margin = 12
             
             var isWrap = false
             if json["wrap"].boolValue {
@@ -301,5 +262,73 @@ extension FlexLayoutCollectionViewCell {
                 break
         }
         return label
+    }
+}
+
+//MARK: Flex Image
+extension FlexLayoutCollectionViewCell {
+    func createFlexImage(json: JSON) -> UIView {
+        let view = UIView(frame: .zero)
+        view.configureLayout { (layout) in
+            layout.isEnabled = true
+        }
+        let episodeImageView = UIImageView(frame: .zero)
+        episodeImageView.backgroundColor = .gray
+        // 2
+        let image = UIImage(named: json["url"].stringValue)
+        episodeImageView.image = image
+        // 3
+        let imageWidth = image?.size.width ?? 1.0
+        let imageHeight = image?.size.height ?? 1.0
+        // 4
+        let aspectRatio = json["aspectRatio"].stringValue
+        episodeImageView.configureLayout { (layout) in
+            layout.isEnabled = true
+            layout.flexGrow = CGFloat(json["flex"].intValue)
+            if aspectRatio != "" {
+                let seperateString = aspectRatio.split(separator: ":")
+                let width = String(seperateString.first ?? "1")
+                let height = String(seperateString.last ?? "1")
+                layout.aspectRatio = CGFloat(Int(width) ?? 1) / CGFloat(Int(height) ?? 1)
+            }else{
+                layout.aspectRatio = imageWidth / imageHeight
+            }
+        }
+        view.addSubview(episodeImageView)
+        return view
+    }
+}
+
+//MARK: Flex Icon
+extension FlexLayoutCollectionViewCell {
+    func createFlexIcon(json: JSON) -> UIView {
+        let view = UIView(frame: .zero)
+        view.configureLayout { (layout) in
+            layout.isEnabled = true
+        }
+        let episodeImageView = UIImageView(frame: .zero)
+        episodeImageView.backgroundColor = .gray
+        // 2
+        let image = UIImage(named: json["url"].stringValue)
+        episodeImageView.image = image
+        // 3
+        let imageWidth = image?.size.width ?? 1.0
+        let imageHeight = image?.size.height ?? 1.0
+        // 4
+        let aspectRatio = json["aspectRatio"].stringValue
+        episodeImageView.configureLayout { (layout) in
+            layout.isEnabled = true
+            layout.flexGrow = CGFloat(json["flex"].intValue)
+            if aspectRatio != "" {
+                let seperateString = aspectRatio.split(separator: ":")
+                let width = String(seperateString.first ?? "1")
+                let height = String(seperateString.last ?? "1")
+                layout.aspectRatio = CGFloat(Int(width) ?? 1) / CGFloat(Int(height) ?? 1)
+            }else{
+                layout.aspectRatio = imageWidth / imageHeight
+            }
+        }
+        view.addSubview(episodeImageView)
+        return view
     }
 }
