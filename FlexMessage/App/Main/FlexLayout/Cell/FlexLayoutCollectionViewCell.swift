@@ -15,6 +15,8 @@ private enum FlexType {
     static let text: String = "text"
     static let image: String = "image"
     static let icon: String = "icon"
+    static let spacer: String = "spacer"
+    static let button: String = "button"
 }
 
 private enum LayoutType {
@@ -23,10 +25,15 @@ private enum LayoutType {
     static let baseline: String = "baseline"
 }
 
+private enum Constant {
+    static let backgroundIdentifier : Int = 14123124123
+}
+
 class FlexLayoutCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var flexLayoutView: UIView!
-    private let padding: YGValue = 8.0
+    private let padding: CGFloat = 8.0
+    
     
     var jsonData: JSON? {
         didSet {
@@ -114,18 +121,47 @@ extension FlexLayoutCollectionViewCell {
             if body != JSON.null {
                 self.checkFlexType(json: body)
             }
+            let footer = json["footer"]
+            if footer != JSON.null {
+                self.checkFlexType(json: footer)
+            }
             
             flex.markDirty()
         }
         
-//        let view = UIView(frame: self.bounds)
-//        view.backgroundColor = UIColor.white
-//        view.layer.cornerRadius = 12
-//        self.addSubview(view)
-//        self.sendSubviewToBack(view)
-        
+        //checkBackgroudSubview()
         flexLayoutView.yoga.applyLayout(preservingOrigin: true)
         setNeedsLayout()
+    }
+    
+    func checkBackgroudSubview(){
+        let view = UIView(frame: self.bounds)
+        view.tag = Constant.backgroundIdentifier
+//        if subviews.contains(view) {
+//            view.removeFromSuperview()
+//        }else{
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+//                view.backgroundColor = UIColor.yellow
+//                view.layer.cornerRadius = 12
+//                self.addSubview(view)
+//                self.sendSubviewToBack(view)
+//            }
+//        }
+//
+        for subview in self.subviews {
+            if subview.tag == Constant.backgroundIdentifier {
+                subview.removeFromSuperview()
+            }else{
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+                    let view = UIView(frame: self.bounds)
+                    view.tag = Constant.backgroundIdentifier
+                    view.backgroundColor = UIColor.white
+                    view.layer.cornerRadius = 12
+                    self.addSubview(view)
+                    self.sendSubviewToBack(view)
+                }
+            }
+        }
     }
 }
 
@@ -163,6 +199,9 @@ extension FlexLayoutCollectionViewCell {
                 case FlexType.box:
                     let flexBoxView = createFlexBox(json: json[i])
                     views.append(flexBoxView)
+                case FlexType.button:
+                    let flexButton = createFlexButton(json: json[i])
+                    views.append(flexButton)
                 default:
                     break
             }
@@ -194,7 +233,7 @@ extension FlexLayoutCollectionViewCell {
             (flex) in
             flex.isEnabled = true
             flex.flexDirection = layoutType
-            flex.padding = self.padding
+            flex.padding = YGValue(self.padding)
             
             if layoutTypeString == LayoutType.baseline {
                 flex.alignItems = .baseline
@@ -339,6 +378,51 @@ extension FlexLayoutCollectionViewCell {
             }
         }
         view.addSubview(episodeImageView)
+        return view
+    }
+}
+
+//MARK: Spacer
+extension FlexLayoutCollectionViewCell {
+    func createFlexSpacer() -> UIView {
+        let view = UIView(frame: .zero)
+        view.configureLayout { (layout) in
+            layout.isEnabled = true
+        }
+        return view
+    }
+}
+
+//MARK: Button
+extension FlexLayoutCollectionViewCell {
+    func createFlexButton(json: JSON) -> UIView{
+        let view = UIView(frame: .zero)
+        let margin: CGFloat = self.padding * 2
+        let width = self.frame.width - margin
+        view.layer.cornerRadius = 12
+        view.clipsToBounds = true
+        view.configureLayout { (layout) in
+            layout.isEnabled = true
+            layout.width = YGValue(width)
+        }
+        let button = UIButton(frame: .zero)
+        button.configureLayout { (layout) in
+            layout.isEnabled = true
+            layout.height = 50
+            layout.width = YGValue(width)
+        }
+        let action = json["action"]
+        button.setTitle(action["label"].stringValue, for: .normal)
+        
+        let color = json["color"].stringValue
+        button.backgroundColor = UIColor(hex: color)
+        
+        let style = json["style"].stringValue
+        if style == "primary" {
+            button.setTitleColor(UIColor.white, for: .normal)
+        }
+        
+        view.addSubview(button)
         return view
     }
 }

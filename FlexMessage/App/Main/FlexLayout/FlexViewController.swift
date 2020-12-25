@@ -550,6 +550,8 @@ extension FlexViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch dataType {
             case "carousel":
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: indexPath) as! FlexLayoutCollectionViewCell
+                cell.removeAllSubviews()
+                cell.checkBackgroudSubview()
                 cell.jsonData = rawDataJSON["contents"][indexPath.row]
                 cell.layoutIfNeeded()
                 return cell
