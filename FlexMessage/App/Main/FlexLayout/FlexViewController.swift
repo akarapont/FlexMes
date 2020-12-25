@@ -365,7 +365,7 @@ class FlexViewController: UIViewController {
             ],
             "hero": [
               "type": "image",
-              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_4_news.png",
+                "url": "newsDigest",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_4_news.png",
               "size": "full",
               "aspectRatio": "20:13",
               "aspectMode": "cover",
@@ -387,7 +387,7 @@ class FlexViewController: UIViewController {
                   "contents": [
                     [
                       "type": "image",
-                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_1.png",
+                      "url": "Image",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_1.png",
                       "gravity": "bottom",
                       "size": "sm",
                       "aspectRatio": "4:3",
@@ -395,7 +395,7 @@ class FlexViewController: UIViewController {
                     ],
                     [
                       "type": "image",
-                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_2.png",
+                      "url": "Image-1",//"https://scdn.line-apps.com/n/channel_devcenter/img/fx/02_1_news_thumbnail_2.png",
                       "margin": "md",
                       "size": "sm",
                       "aspectRatio": "4:3",

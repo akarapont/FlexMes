@@ -17,6 +17,7 @@ private enum FlexType {
     static let icon: String = "icon"
     static let spacer: String = "spacer"
     static let button: String = "button"
+    static let seperator: String = "seperator"
 }
 
 private enum LayoutType {
@@ -129,7 +130,6 @@ extension FlexLayoutCollectionViewCell {
             flex.markDirty()
         }
         
-        //checkBackgroudSubview()
         flexLayoutView.yoga.applyLayout(preservingOrigin: true)
         setNeedsLayout()
     }
@@ -137,17 +137,6 @@ extension FlexLayoutCollectionViewCell {
     func checkBackgroudSubview(){
         let view = UIView(frame: self.bounds)
         view.tag = Constant.backgroundIdentifier
-//        if subviews.contains(view) {
-//            view.removeFromSuperview()
-//        }else{
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-//                view.backgroundColor = UIColor.yellow
-//                view.layer.cornerRadius = 12
-//                self.addSubview(view)
-//                self.sendSubviewToBack(view)
-//            }
-//        }
-//
         for subview in self.subviews {
             if subview.tag == Constant.backgroundIdentifier {
                 subview.removeFromSuperview()
@@ -191,7 +180,7 @@ extension FlexLayoutCollectionViewCell {
                     let flexText = createFlexText(contentView: contentView, json: json[i])
                     views.append(flexText)
                 case FlexType.image:
-                    let flexImage = createFlexIcon(json: json[i])
+                    let flexImage = createFlexImage(json: json[i])
                     views.append(flexImage)
                 case FlexType.icon:
                     let flexIcon = createFlexIcon(json: json[i])
@@ -202,6 +191,10 @@ extension FlexLayoutCollectionViewCell {
                 case FlexType.button:
                     let flexButton = createFlexButton(json: json[i])
                     views.append(flexButton)
+                case FlexType.seperator:
+                    let flexSeperator = createFlexSeperator(json: json[i])
+                    views.append(flexSeperator)
+                break
                 default:
                     break
             }
@@ -217,7 +210,6 @@ extension FlexLayoutCollectionViewCell {
         let layoutTypeString = json["layout"].stringValue.lowercased()
         var layoutType: YGFlexDirection = .row
         
-        //var layoutType: Flex.Direction = .row
         switch layoutTypeString {
             case LayoutType.vertical:
                 layoutType = .column
@@ -228,7 +220,6 @@ extension FlexLayoutCollectionViewCell {
         }
         
         let containerView = UIView(frame: .zero)
-        containerView.pin.width(contentView.frame.width)
         containerView.configureLayout(block: {
             (flex) in
             flex.isEnabled = true
@@ -241,6 +232,7 @@ extension FlexLayoutCollectionViewCell {
                 flex.alignItems = .flexStart
             }
             
+            flex.flexGrow = CGFloat(json["flex"].intValue)
             let contentViews = self.createContents(contentView: containerView, json: json["contents"])
             for view in contentViews {
                 containerView.addSubview(view)
@@ -323,13 +315,13 @@ extension FlexLayoutCollectionViewCell {
         }
         let episodeImageView = UIImageView(frame: .zero)
         episodeImageView.backgroundColor = .gray
-        // 2
+
         let image = UIImage(named: json["url"].stringValue)
         episodeImageView.image = image
-        // 3
+
         let imageWidth = image?.size.width ?? 1.0
         let imageHeight = image?.size.height ?? 1.0
-        // 4
+ 
         let aspectRatio = json["aspectRatio"].stringValue
         episodeImageView.configureLayout { (layout) in
             layout.isEnabled = true
@@ -339,6 +331,7 @@ extension FlexLayoutCollectionViewCell {
                 let width = String(seperateString.first ?? "1")
                 let height = String(seperateString.last ?? "1")
                 layout.aspectRatio = CGFloat(Int(width) ?? 1) / CGFloat(Int(height) ?? 1)
+                print("\(width):\(height)")
             }else{
                 layout.aspectRatio = imageWidth / imageHeight
             }
@@ -357,13 +350,13 @@ extension FlexLayoutCollectionViewCell {
         }
         let episodeImageView = UIImageView(frame: .zero)
         episodeImageView.backgroundColor = .white
-        // 2
+
         let image = UIImage(named: json["url"].stringValue)
         episodeImageView.image = image
-        // 3
+
         let imageWidth = image?.size.width ?? 1.0
         let imageHeight = image?.size.height ?? 1.0
-        // 4
+
         let aspectRatio = json["aspectRatio"].stringValue
         episodeImageView.configureLayout { (layout) in
             layout.isEnabled = true
@@ -388,6 +381,28 @@ extension FlexLayoutCollectionViewCell {
         let view = UIView(frame: .zero)
         view.configureLayout { (layout) in
             layout.isEnabled = true
+        }
+        return view
+    }
+}
+
+//MARK: Seperator
+extension FlexLayoutCollectionViewCell {
+    func createFlexSeperator(json: JSON) -> UIView {
+        let view = UIView(frame: .zero)
+        let margin: CGFloat = self.padding * 2
+        let width = self.frame.width - margin
+        
+        let color = json["color"].stringValue
+        if color != ""{
+            view.backgroundColor = UIColor.init(hex: color)
+        }else{
+            view.backgroundColor = .systemGroupedBackground
+        }
+        view.configureLayout { (layout) in
+            layout.isEnabled = true
+            layout.width = YGValue(width)
+            layout.height = 1
         }
         return view
     }
