@@ -111,27 +111,19 @@ extension FlexLayoutCollectionViewCell {
             flex.direction(.column)
             let header = json["header"]
             if header != JSON.null {
-                if let headerView = self.checkFlexType(flex: flex, json: header) {
-                    flex.addItem(headerView).shrink(1)
-                }
+                self.checkFlexType(flex: flex, json: header)
             }
             let hero = json["hero"]
             if hero != JSON.null {
-                if let heroView = self.checkFlexType(flex: flex, json: hero) {
-                    flex.addItem(heroView).shrink(1)
-                }
+                self.checkFlexType(flex: flex, json: hero)
             }
             let body = json["body"]
             if body != JSON.null {
-                if let body = self.checkFlexType(flex: flex, json: body) {
-                    flex.addItem(body).shrink(1)
-                }
+                self.checkFlexType(flex: flex, json: body)
             }
             let footer = json["footer"]
             if footer != JSON.null {
-                if let footer = self.checkFlexType(flex: flex, json: footer) {
-                    flex.addItem(footer).shrink(1)
-                }
+                self.checkFlexType(flex: flex, json: footer)
             }
         }
         flexLayoutView.flex.layout(mode: .fitContainer)
@@ -161,55 +153,52 @@ extension FlexLayoutCollectionViewCell {
 //MARK: Component
 extension FlexLayoutCollectionViewCell {
     
-    func checkFlexType(flex: Flex, json: JSON) -> UIView? {
+    func checkFlexType(flex: Flex, json: JSON) {
         let type = json["type"].stringValue.lowercased()
         switch type {
             case FlexType.box:
                 let flexBoxView = createFlexBox(json: json)
                 flexBoxView.tag = 11111
-                return flexBoxView
+                flex.addItem(flexBoxView).shrink(1)
                 //flexLayoutView.addSubview(flexBoxView)
             case FlexType.image:
                 let flexImageView = createFlexImage(json: json)
-                return flexImageView
+                flex.addItem(flexImageView).shrink(1)
                 //flexLayoutView.addSubview(flexImageView)
             default:
                 break
         }
-        return nil
     }
     
-    func createContents(contentView: UIView, json: JSON) -> [UIView] {
-        var views = [UIView]()
+    func createContents(flex: Flex, json: JSON) {
         for i in 0..<json.count {
             let type = json[i]["type"].stringValue
             switch type {
                 case FlexType.text:
                     let flexText = createFlexText(contentView: contentView, json: json[i])
-                    views.append(flexText)
+                    flex.addItem(flexText).shrink(1)
                 case FlexType.image:
                     let flexImage = createFlexImage(json: json[i])
-                    views.append(flexImage)
+                    flex.addItem(flexImage).shrink(1)
                 case FlexType.icon:
                     let flexIcon = createFlexIcon(json: json[i])
-                    views.append(flexIcon)
+                    flex.addItem(flexIcon)
                 case FlexType.box:
                     let flexBoxView = createFlexBox(json: json[i])
                     flexBoxView.tag = 22222
                     //flexBoxView.clipsToBounds = true
-                    views.append(flexBoxView)
+                    flex.addItem(flexBoxView).shrink(1)
                 case FlexType.button:
                     let flexButton = createFlexButton(json: json[i])
-                    views.append(flexButton)
+                    flex.addItem(flexButton)
                 case FlexType.seperator:
                     let flexSeperator = createFlexSeperator(json: json[i])
-                    views.append(flexSeperator)
-                break
+                    flex.addItem(flexSeperator)
+                    break
                 default:
                     break
             }
         }
-        return views
     }
 }
 
@@ -243,10 +232,11 @@ extension FlexLayoutCollectionViewCell {
                 flex.alignItems(.start)
             }
             flex.grow(CGFloat(json["flex"].intValue))
-            let contentViews = self.createContents(contentView: containerView, json: json["contents"])
-            for view in contentViews {
-                flex.addItem(view).shrink(1)
-            }
+            self.createContents(flex: flex, json: json["contents"])
+//            let contentViews = self.createContents(contentView: containerView, json: json["contents"])
+           // for view in contentViews {
+               
+            //}
         }
 
         return containerView
