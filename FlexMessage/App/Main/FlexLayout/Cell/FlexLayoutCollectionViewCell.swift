@@ -186,7 +186,7 @@ extension FlexLayoutCollectionViewCell {
                 case FlexType.box:
                     let flexBoxView = createFlexBox(json: json[i])
                     flexBoxView.tag = 22222
-                    //flexBoxView.clipsToBounds = true
+                    flexBoxView.clipsToBounds = true
                     flex.addItem(flexBoxView).shrink(1)
                 case FlexType.button:
                     let flexButton = createFlexButton(json: json[i])
