@@ -565,7 +565,7 @@ extension FlexViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         /*let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.flexCellId, for: indexPath) as! FlexLayoutCollectionViewCell
         let cellSize = cell.sizeThatFits(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude))
-        print("Cell size at index: \(indexPath.row),   size: \(cellSize)")
+ 
         return cellSize*/
         
         let cellSize = getCellSize(json: rawDataJSON["contents"])
@@ -580,7 +580,7 @@ extension FlexViewController: UICollectionViewDelegate, UICollectionViewDataSour
             height.append(cellSize.height)
             print("Cell size at index: \(collectionView.frame.width),   size: \(height.max())")
         }
-        return CGSize(width: collectionView.frame.width, height: height.max() ?? 300)
+        return CGSize(width: 300, height: height.max() ?? 300)
     }
     
     

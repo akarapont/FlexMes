@@ -17,7 +17,7 @@ private enum FlexType {
     static let icon: String = "icon"
     static let spacer: String = "spacer"
     static let button: String = "button"
-    static let seperator: String = "seperator"
+    static let separator: String = "separator"
 }
 
 private enum LayoutType {
@@ -45,8 +45,8 @@ class FlexLayoutCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         flexLayoutView.frame = frame
+        print("Check cell frame size: \(frame)")
         setupCell()
         reloadData()
     }
@@ -59,7 +59,10 @@ class FlexLayoutCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         contentView.autoresizingMask.insert(.flexibleHeight)
+        flexLayoutView.frame = frame
+        print("Check cell frame size: \(frame)")
         setupCell()
+        reloadData()
     }
     
     func removeAllSubviews(){
@@ -162,8 +165,7 @@ extension FlexLayoutCollectionViewCell {
                 flex.addItem(flexBoxView).shrink(1)
                 //flexLayoutView.addSubview(flexBoxView)
             case FlexType.image:
-                let flexImageView = createFlexImage(json: json)
-                flex.addItem(flexImageView).shrink(1)
+                createFlexImage(flex: flex, json: json)
                 //flexLayoutView.addSubview(flexImageView)
             default:
                 break
@@ -175,11 +177,12 @@ extension FlexLayoutCollectionViewCell {
             let type = json[i]["type"].stringValue
             switch type {
                 case FlexType.text:
-                    let flexText = createFlexText(contentView: contentView, json: json[i])
-                    flex.addItem(flexText).shrink(1)
+                    if let view = flex.view {
+                        let flexText = createFlexText(contentView: view, json: json[i])
+                        flex.addItem(flexText).shrink(1)
+                    }
                 case FlexType.image:
-                    let flexImage = createFlexImage(json: json[i])
-                    flex.addItem(flexImage).shrink(1)
+                    createFlexImage(flex: flex, json: json[i])
                 case FlexType.icon:
                     let flexIcon = createFlexIcon(json: json[i])
                     flex.addItem(flexIcon)
@@ -187,12 +190,12 @@ extension FlexLayoutCollectionViewCell {
                     let flexBoxView = createFlexBox(json: json[i])
                     flexBoxView.tag = 22222
                     flexBoxView.clipsToBounds = true
-                    flex.addItem(flexBoxView).shrink(1)
+                    flex.addItem(flexBoxView).shrink(1).layout(mode: .fitContainer)
                 case FlexType.button:
                     let flexButton = createFlexButton(json: json[i])
                     flex.addItem(flexButton)
-                case FlexType.seperator:
-                    let flexSeperator = createFlexSeperator(json: json[i])
+                case FlexType.separator:
+                    let flexSeperator = createFlexSeparator(json: json[i])
                     flex.addItem(flexSeperator)
                     break
                 default:
@@ -233,10 +236,6 @@ extension FlexLayoutCollectionViewCell {
             }
             flex.grow(CGFloat(json["flex"].intValue))
             self.createContents(flex: flex, json: json["contents"])
-//            let contentViews = self.createContents(contentView: containerView, json: json["contents"])
-           // for view in contentViews {
-               
-            //}
         }
 
         return containerView
@@ -303,9 +302,8 @@ extension FlexLayoutCollectionViewCell {
 
 //MARK: Flex Image
 extension FlexLayoutCollectionViewCell {
-    func createFlexImage(json: JSON) -> UIView {
-        let view = UIView(frame: .zero)
-        view.flex.define { (layout) in
+    func createFlexImage(flex: Flex, json: JSON) {
+        flex.define { (layout) in
             let episodeImageView = UIImageView(frame: .zero)
             episodeImageView.backgroundColor = .white
             
@@ -322,22 +320,14 @@ extension FlexLayoutCollectionViewCell {
                     let width = String(seperateString.first ?? "1")
                     let height = String(seperateString.last ?? "1")
                     layout.aspectRatio(CGFloat(Int(width) ?? 1) / CGFloat(Int(height) ?? 1))
-                    if width == "4" {
-                        print("Check image size:\(layout.intrinsicSize)")
-                    }
-                    //print("\(width):\(height)")
                 }else{
                     let ratio = imageWidth/imageHeight
                     layout.aspectRatio(ratio)
-                    layout.shrink(1)
-                    layout.markDirty()
                 }
-                layout.shrink(1)
             }
             layout.markDirty()
             layout.addItem(episodeImageView).shrink(1)
         }
-        return view
     }
 }
 
@@ -363,13 +353,11 @@ extension FlexLayoutCollectionViewCell {
                     let width = String(seperateString.first ?? "1")
                     let height = String(seperateString.last ?? "1")
                     layout.aspectRatio(CGFloat(Int(width) ?? 1) / CGFloat(Int(height) ?? 1))
-                    print("\(width):\(height)")
                 }else{
                     let ratio = imageWidth/imageHeight
                     layout.aspectRatio(ratio)
                     layout.markDirty()
                 }
-                layout.shrink(1)
             }
             layout.markDirty()
             layout.addItem(episodeImageView).shrink(1)
@@ -391,7 +379,7 @@ extension FlexLayoutCollectionViewCell {
 
 //MARK: Seperator
 extension FlexLayoutCollectionViewCell {
-    func createFlexSeperator(json: JSON) -> UIView {
+    func createFlexSeparator(json: JSON) -> UIView {
         let view = UIView(frame: .zero)
         let margin: CGFloat = self.padding * 2
         let width = self.frame.width - margin
@@ -433,11 +421,17 @@ extension FlexLayoutCollectionViewCell {
         button.setTitle(action["label"].stringValue, for: .normal)
         
         let color = json["color"].stringValue
+        if color != "" {
         button.backgroundColor = UIColor(hex: color)
+        }else{
+            button.backgroundColor = .white
+        }
         
         let style = json["style"].stringValue
         if style == "primary" {
             button.setTitleColor(UIColor.white, for: .normal)
+        }else{
+            button.setTitleColor(UIColor.systemBlue, for: .normal)
         }
         
         view.addSubview(button)
